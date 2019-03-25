@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import './SearchBar.css';
 
-return (
+const SearchBar = () =>  {
+    return (
     <nav>
         <span>
             Logo
         </span>
 
-        <input>
-            Search
-        </input>
+        <input
+        type="search"
+        placeholder="search"
+        />
 
         <span>
-            <a>Feed</a>
-            <a>Likes</a>
-            <a>Profile</a>
+            <button>Feed</button>
+            <button>Likes</button>
+            <button>Profile</button>
         </span>
     </nav>
-);
+)};
 
 export default SearchBar;
