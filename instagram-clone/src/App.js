@@ -4,12 +4,11 @@ import SearchBar from './components/SearchBar/SearchBar.js';
 import PostContainer from './components/PostContainer/PostContainer.js';
 import PropTypes from 'prop-types';
 import DummyData from  './dummy-data'
-import dummyData from './dummy-data';
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      dummyDate: dummyData
+      dummyDate: DummyData.dummyData
     }
   }
   render() {
@@ -22,4 +21,13 @@ class App extends Component {
   }
 }
 
+PostContainer.propTypes = {
+  post: PropTypes.shape({
+    username: PropTypes.string,
+    thumbnailUrl: PropTypes.string,
+    imageUrl: PropTypes.string,
+    likes: PropTypes.number,
+    timestamp: PropTypes.string
+  })
+};
 export default App;
