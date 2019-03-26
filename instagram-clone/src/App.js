@@ -36,11 +36,11 @@ class App extends Component {
 
 PostContainer.propTypes = {
   post: PropTypes.shape({
-    username: PropTypes.string,
-    thumbnailUrl: PropTypes.string,
+    username: PropTypes.string.isRequired,
+    thumbnailUrl: PropTypes.string.isRequired,
     imageUrl: PropTypes.string,
     likes: PropTypes.number,
-    timestamp: PropTypes.string
+    timestamp: PropTypes.string.isRequired
   })
 };
 export default App;

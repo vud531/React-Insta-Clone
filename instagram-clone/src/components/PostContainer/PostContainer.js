@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './PostContainer.css';
-
+import CommentSection from './../CommentSection/CommentSection'
 const PostContainer = (props) =>  {
     console.log(props);
     return (
@@ -22,6 +22,7 @@ const PostContainer = (props) =>  {
             </div>
             <div className="like-count">{props.postProps.likes}</div>            
             <div className="time">{props.postProps.timestamp}</div>
+            <CommentSection comments={props.postProps.comments} />
 
         </div>
         )
