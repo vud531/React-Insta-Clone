@@ -18,7 +18,7 @@ class App extends Component {
     return (
       <div>
         <SearchBar/>
-        <ul>
+        <ul className="posts">
           {this.state.dummyData.map((post, index) => (
             
             <li key={index}>

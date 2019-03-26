@@ -1,4 +1,40 @@
-.App {
+.posts {
+  max-width: 500px;
+  width: 100%;
+  list-style: none;
+  margin: auto;
+  box-sizing: border-box;
+  padding: 0px;
+  background-color: #d9e8fa;
+}
+
+:root {
+  background-color: #d9e8fa;
+
+}
+
+
+/* @media (max-width: 500px) {
+
+  .posts {
+  
+      max-width: 100%;
+
+  
+  }
+}
+
+
+@media (min-width: 500px) {
+  .posts {
+      list-style: none;
+      width: 70%;
+      margin: auto;
+      padding: 0;
+  }
+} */
+
+/* .App {
   text-align: center;
 }
 
@@ -30,4 +66,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

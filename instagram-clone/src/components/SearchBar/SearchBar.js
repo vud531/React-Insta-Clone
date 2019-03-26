@@ -9,14 +9,15 @@ const SearchBar = () =>  {
         </span>
 
         <input
+        className="search-bar"
         type="search"
         placeholder="search"
         />
 
         <span>
-            <button>Feed</button>
-            <button>Likes</button>
-            <button>Profile</button>
+            <button>F</button>
+            <button>L</button>
+            <button>P</button>
         </span>
     </nav>
 )};

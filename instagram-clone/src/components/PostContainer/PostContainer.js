@@ -5,10 +5,10 @@ const PostContainer = (props) =>  {
     console.log(props);
     return (
         <div className="post-container">
-            <div>
+            <div className="container-head">
                 <img 
                 alt="profile" 
-                className="photo"
+                className="profile"
                 src={props.postProps.thumbnailUrl}/>
                 <span className="username">{props.postProps.username}</span>
             </div>

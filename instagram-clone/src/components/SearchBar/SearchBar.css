@@ -1,6 +1,19 @@
 nav {
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    background-color: whitesmoke;
+    box-shadow: 0px 1px 6px 2px #c0d2e6ad;
+
 }
+
+.search-bar {
+    /* box-shadow:inset 0px 1px 1px 1px #c0d2e6ad; */
+    padding: 10px;
+}
+
 
