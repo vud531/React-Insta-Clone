@@ -22,9 +22,9 @@ class App extends Component {
           {this.state.dummyData.map((post, index) => (
             
             <li key={index}>
-              <div className="App">
+              {/* <div className="App"> */}
               <PostContainer postProps={post} />
-              </div>
+              {/* </div> */}
             </li>)
           )}
         </ul>

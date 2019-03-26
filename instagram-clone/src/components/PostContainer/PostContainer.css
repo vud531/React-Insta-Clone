@@ -1,6 +1,7 @@
 .post-container {
     max-width: 600px;
-    margin: 25px auto;
+    /* margin: 25px auto; */
+    margin-bottom: 25px;
     background-color: whitesmoke;
 
     display: flex;
@@ -13,8 +14,8 @@
 
     
     display: flex;
-    /* justify-content: ; */
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 .post-content {
     width: 100%;
@@ -42,4 +43,10 @@
 
 img.profile {
     width: 50px;
+    border-radius: 50%;
+    margin: 5px; 
+}
+
+span.username {
+    margin: 5px;
 }
