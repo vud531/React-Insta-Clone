@@ -20,7 +20,7 @@ const PostContainer = (props) =>  {
                 <button>like</button>
                 <button>comment</button>
             </div>
-            <div className="like-count">{props.postProps.likes}</div>            
+            <div className="like-count">{props.postProps.likes} likes</div>            
             <div className="time">{props.postProps.timestamp}</div>
             <CommentSection comments={props.postProps.comments} />
 
