@@ -3,20 +3,33 @@ import './App.css';
 import SearchBar from './components/SearchBar/SearchBar.js';
 import PostContainer from './components/PostContainer/PostContainer.js';
 import PropTypes from 'prop-types';
-import DummyData from  './dummy-data'
+import dummyData from  './dummy-data'
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      dummyDate: DummyData.dummyData
+      dummyData: dummyData
     }
+
+    console.log(this.state);
+
   }
   render() {
     return (
-      <div className="App">
+      <div>
         <SearchBar/>
-        <PostContainer/>
+        <ul>
+          {this.state.dummyData.map((post, index) => (
+            
+            <li key={index}>
+              <div className="App">
+              <PostContainer postProps={post} />
+              </div>
+            </li>)
+          )}
+        </ul>
       </div>
+      
     );
   }
 }
