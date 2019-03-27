@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import SearchBar from './components/SearchBar/SearchBar.js';
-import PostContainer from './components/PostContainer/PostContainer.js';
+import SearchBar from './components/SearchBar/SearchBar';
+import PostContainer from './components/PostContainer/PostContainer';
 import PropTypes from 'prop-types';
 import dummyData from  './dummy-data'
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      dummyData: []
+      dummyData: [],
+      newComment: {username: "duc", text: ""}
     }
 
     console.log(this.state);
@@ -33,15 +34,30 @@ class App extends Component {
             
             <li key={index}>
               {/* <div className="App"> */}
-              <PostContainer postProps={post} />
+              <PostContainer 
+              postProps={post} 
+              newComment={this.state.newComment}
+              onCommentInputChange={this.onCommentInputChange}
+              />
               {/* </div> */}
             </li>)
           )}
         </ul>
-      </div>
-      
+      </div> 
     );
   }
+
+  onCommentInputChange = e => {
+    e.preventDefault();
+    console.log(e.target);
+    let comment = this.state.newComment;
+    comment.text = e.target.value;
+    this.setState({newComment: comment});
+  }
+
+
+
+
 }
 
 PostContainer.propTypes = {

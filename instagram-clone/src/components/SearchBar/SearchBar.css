@@ -9,9 +9,9 @@ nav {
     /* box-shadow: 0px 1px 6px 2px #c0d2e6ad; */
     position: fixed;
     height: 50px;
-    border-bottom: solid #d8d7d7 1px;
+    border: solid #d8d7d7 1px;
     z-index: 1;
-
+    top: 0px;
 }
 
 .search-bar {

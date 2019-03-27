@@ -23,7 +23,14 @@ const PostContainer = (props) =>  {
             <div className="like-count">{props.postProps.likes} likes</div>            
             <div className="time">{props.postProps.timestamp}</div>
             <CommentSection comments={props.postProps.comments} />
-
+            <form>
+            <input 
+                className="comment-input"
+                placeholder="Add a comment"
+                value={props.newComment.text}
+                onChange={props.onCommentInputChange}
+                />
+            </form>
         </div>
         )
     };

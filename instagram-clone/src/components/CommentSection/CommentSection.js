@@ -13,10 +13,7 @@ const CommentSection = (props) => {
             ))}
             </ul>
 
-            <input 
-            className="comment-input"
-            placeholder="Add a comment"
-            />
+            
         </div>
     )
 
