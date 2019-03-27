@@ -12,8 +12,6 @@ const CommentSection = (props) => {
                 </li>
             ))}
             </ul>
-
-            
         </div>
     )
 

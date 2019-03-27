@@ -2,22 +2,24 @@ import React, { Component } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar/SearchBar';
 import PostContainer from './components/PostContainer/PostContainer';
+import CommentForm from './components/CommentForm/CommentForm';
 import PropTypes from 'prop-types';
 import dummyData from  './dummy-data'
 class App extends Component {
   constructor(){
     super();
     this.state = {
+      currentUser: "duc",
       dummyData: [],
-      newComment: {username: "duc", text: ""}
+      newComments: []
     }
 
-    console.log(this.state);
+    // console.log(this.state);
 
   }
 
   componentDidMount() {
-    console.log('hi');
+    // console.log('hi');
     this.setState({dummyData: dummyData});
   }
   render() {
@@ -32,14 +34,19 @@ class App extends Component {
         <ul className="posts">
           {this.state.dummyData.map((post, index) => (
             
-            <li key={index}>
+            <li className="post" key={index}>
               {/* <div className="App"> */}
-              <PostContainer 
+              <PostContainer
+              id={index}
               postProps={post} 
-              newComment={this.state.newComment}
-              onCommentInputChange={this.onCommentInputChange}
               />
               {/* </div> */}
+              <CommentForm 
+              id={index}
+              newComment={this.state.newComments[index] ? this.state.newComments[index].text : ""}
+              onCommentInputChange={this.onCommentInputChange}
+              addComment={this.addComment}
+              />
             </li>)
           )}
         </ul>
@@ -49,13 +56,30 @@ class App extends Component {
 
   onCommentInputChange = e => {
     e.preventDefault();
-    console.log(e.target);
-    let comment = this.state.newComment;
-    comment.text = e.target.value;
-    this.setState({newComment: comment});
+    // console.log(e.target.parentElement.id);
+    const index = e.target.parentElement.id;
+    const text = e.target.value;
+    const newComments = this.state.newComments
+    newComments[index] = 
+    { 
+      // postId: index, 
+      username: this.state.currentUser, 
+      text: text
+    }
+
+    this.setState({newComments: newComments});
   }
 
+  addComment = e => {
+    e.preventDefault()
+    const index = e.target.parentElement.id;
+    const newComment = this.state.newComments[index];
+    const data = this.state.dummyData;
 
+    data[index].comments.push(newComment);
+
+    this.setState({dummyData: data});
+  }
 
 
 }
@@ -69,4 +93,12 @@ PostContainer.propTypes = {
     timestamp: PropTypes.string.isRequired
   })
 };
+
+CommentForm.propTypes = {
+  comment: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+  })
+};
+
 export default App;

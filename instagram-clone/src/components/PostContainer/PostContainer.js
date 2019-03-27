@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './PostContainer.css';
 import CommentSection from './../CommentSection/CommentSection'
 const PostContainer = (props) =>  {
-    console.log(props);
+    // console.log(props);
     return (
-        <div className="post-container">
+        <div id={props.id} className="post-container">
             <div className="container-head">
                 <img 
                 alt="profile" 
@@ -23,14 +23,7 @@ const PostContainer = (props) =>  {
             <div className="like-count">{props.postProps.likes} likes</div>            
             <div className="time">{props.postProps.timestamp}</div>
             <CommentSection comments={props.postProps.comments} />
-            <form>
-            <input 
-                className="comment-input"
-                placeholder="Add a comment"
-                value={props.newComment.text}
-                onChange={props.onCommentInputChange}
-                />
-            </form>
+
         </div>
         )
     };
