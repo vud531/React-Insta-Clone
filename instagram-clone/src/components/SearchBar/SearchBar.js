@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './SearchBar.css';
 
-const SearchBar = () =>  {
+const SearchBar = props =>  {
+    // console.log(props)
     return (
     <nav>
         <span>
@@ -12,6 +13,7 @@ const SearchBar = () =>  {
         className="search-bar"
         type="search"
         placeholder="search"
+        onChange={props.onSearchInputChange}
         />
 
         <span>

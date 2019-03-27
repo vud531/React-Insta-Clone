@@ -11,7 +11,9 @@ class App extends Component {
     this.state = {
       currentUser: "duc",
       dummyData: [],
-      newComments: []
+      newComments: [],
+      searchKey: "",
+      foundResults: []
     }
 
     // console.log(this.state);
@@ -23,16 +25,20 @@ class App extends Component {
     this.setState({dummyData: dummyData});
   }
   render() {
-    if (this.state.dummyData.length === 0) {
+    const data = this.state.foundResults.length > 0 ? this.state.foundResults : this.state.dummyData;
+    if (data === 0) {
       return (
         <div>Stay Tuned - Fetching Data</div>
       )
     }
     return (
       <div>
-        <SearchBar/>
+        <SearchBar
+        value={this.state.searchKey}
+        onSearchInputChange={this.onSearchInputChange}
+        />
         <ul className="posts">
-          {this.state.dummyData.map((post, index) => (
+          {data.map((post, index) => (
             
             <li className="post" key={index}>
               {/* <div className="App"> */}
@@ -101,11 +107,20 @@ class App extends Component {
 
   }
 
-  componentDidUpdate(prevProps) {
-    console.log("update", prevProps);
+  componentDidUpdate = props => {
+    console.log("update", props);
   }
 
-
+  onSearchInputChange = e => {
+    // console.log(e.target.value);
+    const key = e.target.value;
+    let results = this.state.foundResults;
+    results = this.state.dummyData.filter(post => post.username.includes(key)); 
+    this.setState({
+      searchKey: key,
+      foundResults: results
+    })
+  }
 
 
 }
