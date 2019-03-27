@@ -72,10 +72,10 @@ class App extends Component {
 
   addComment = e => {
     e.preventDefault()
-    const index = e.target.parentElement.id;
+    const index = e.target.id;
     const newComment = this.state.newComments[index];
     const data = this.state.dummyData;
-
+    console.dir(e.target.parentElement);
     data[index].comments.push(newComment);
 
     this.setState({dummyData: data});
