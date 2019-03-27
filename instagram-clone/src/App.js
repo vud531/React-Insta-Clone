@@ -8,13 +8,23 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      dummyData: dummyData
+      dummyData: []
     }
 
     console.log(this.state);
 
   }
+
+  componentDidMount() {
+    console.log('hi');
+    this.setState({dummyData: dummyData});
+  }
   render() {
+    if (this.state.dummyData.length === 0) {
+      return (
+        <div>Stay Tuned - Fetching Data</div>
+      )
+    }
     return (
       <div>
         <SearchBar/>
