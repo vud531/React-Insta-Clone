@@ -16,8 +16,8 @@ const PostContainer = (props) =>  {
             alt="content" 
             className="post-content"
             src={props.postProps.imageUrl} />
-            <div className="buttons-bar">
-                <button>like</button>
+            <div id={props.id} className="buttons-bar">
+                <button onClick={props.like}>like</button>
                 <button>comment</button>
             </div>
             <div className="like-count">{props.postProps.likes} likes</div>            

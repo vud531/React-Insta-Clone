@@ -38,9 +38,9 @@ class App extends Component {
               {/* <div className="App"> */}
               <PostContainer
               id={index}
-              postProps={post} 
+              postProps={post}
+              like={this.like} 
               />
-              {/* </div> */}
               <CommentForm 
               id={index}
               newComment={this.state.newComments[index] ? this.state.newComments[index].text : ""}
@@ -75,11 +75,37 @@ class App extends Component {
     const index = e.target.id;
     const newComment = this.state.newComments[index];
     const data = this.state.dummyData;
-    console.dir(e.target.parentElement);
+    const comments = Array.from(this.state.newComments);
+    comments[index] = null;
     data[index].comments.push(newComment);
 
-    this.setState({dummyData: data});
+    this.setState(
+      {
+        dummyData: data,
+        newComments: comments 
+      });
+
   }
+
+  like = e => {
+    e.preventDefault()
+    const index = e.target.parentElement.id;
+    // const newComment = this.state.newComments[index];
+    const data = this.state.dummyData;
+    data[index].likes++;
+
+    this.setState(
+      {
+        dummyData: data,
+      });
+
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log("update", prevProps);
+  }
+
+
 
 
 }
