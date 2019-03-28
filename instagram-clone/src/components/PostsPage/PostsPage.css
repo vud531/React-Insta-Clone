@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+  }
+
+.posts {
+max-width: 600px;
+width: 100%;
+list-style: none;
+margin: auto;
+box-sizing: border-box;
+padding: 0px;
+background-color: #fffffff6;
+position: relative;
+top: 50px;
+
+}
+  
