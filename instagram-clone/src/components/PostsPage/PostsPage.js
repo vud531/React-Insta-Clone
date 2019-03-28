@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './PostsPage.css';
 import PropTypes from 'prop-types';
 import dummyData from  './../../dummy-data'
+import styled, { css } from 'styled-components';
 
 
 import SearchBar from './SearchBar/SearchBar';
@@ -9,6 +10,9 @@ import SearchBar from './SearchBar/SearchBar';
 // import CommentSection from './CommentSection/CommentSection';
 import PostContainer from './PostContainer/PostContainer';
 import CommentForm from './CommentForm/CommentForm';
+export const Header = styled.header`
+`;
+
 
 class PostsPage extends Component {
   constructor(currentUser){
@@ -35,9 +39,11 @@ class PostsPage extends Component {
     }
     return (
       <div>
-        <SearchBar
-        value={this.state.searchKey}
-        onSearchInputChange={this.onSearchInputChange} />
+        <Header>
+          <SearchBar
+          value={this.state.searchKey}
+          onSearchInputChange={this.onSearchInputChange} />
+        </Header>
   
         <ul className="posts">
           {data.map((post, index) => (
