@@ -14,7 +14,7 @@ class PostsPage extends Component {
   constructor(){
     super();
     this.state = {
-      currentUser: "duc",
+      currentUser: { username: "duc", likedPosts: [] },
       dummyData: [],
       newComments: [],
       searchKey: "",
@@ -69,7 +69,7 @@ class PostsPage extends Component {
     newComments[index] = 
     { 
       // postId: index, 
-      username: this.state.currentUser, 
+      username: this.state.currentUser.username, 
       text: text
     }
 
@@ -96,13 +96,26 @@ class PostsPage extends Component {
     e.preventDefault()
     const index = e.target.parentElement.id;
     const data = this.state.dummyData;
-    data[index].likes++;
 
+    // Check to see if liked posts contain this post...
+    const currentUserInfo = this.state.currentUser;
+    const newLikedPosts = currentUserInfo.likedPosts.filter(postId => parseInt(postId) === index);
+    if (currentUserInfo.likedPosts.length === newLikedPosts.length) // ... if user has not liked this post
+    {
+      currentUserInfo.likedPosts.push(index); 
+      data[index].likes++;
+    } else { // ... if user already liked this post
+      currentUserInfo.likedPosts = newLikedPosts; 
+      data[index].likes--;
+    }
+    console.log(currentUserInfo);
     this.setState(
       {
         dummyData: data,
+        currentUser: currentUserInfo
       });
 
+      
   }
 
   componentDidUpdate = props => {

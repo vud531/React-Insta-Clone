@@ -15,10 +15,9 @@ class App extends Component {
     this.setState({dummyData: dummyData});
   }
   render() {
-
-    return (
-    <PostsPage />
-    );
+    // const postsPage = () => return (<PostsPage />) 
+    const ComponentFromWithAuthenticate = withAuthenticate(PostsPage)
+    return <ComponentFromWithAuthenticate />;
   }
 }
 
