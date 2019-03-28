@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 
-const withAuthenticate = App =>
-  class extends React.Component {
-    render() {
-      return <App />;
-    }
-  };
+const withAuthenticate = PostPage => LogInPage =>  
+    class extends React.Component {
+
+        render() {
+            if (window.localStorage.currentUser) {
+                return <PostPage currentUser={window.localStorage.currentUser}/>;
+            } else {
+                return <LogInPage />;
+            }
+        }
+    };
 
 export default withAuthenticate;
 

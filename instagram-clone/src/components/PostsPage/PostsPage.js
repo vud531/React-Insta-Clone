@@ -11,10 +11,11 @@ import PostContainer from './PostContainer/PostContainer';
 import CommentForm from './CommentForm/CommentForm';
 
 class PostsPage extends Component {
-  constructor(){
-    super();
+  constructor(currentUser){
+    super(currentUser);
+    console.log(currentUser.username)
     this.state = {
-      currentUser: { username: "duc", likedPosts: [] },
+      currentUser: localStorage.currentUser,
       dummyData: [],
       newComments: [],
       searchKey: "",
