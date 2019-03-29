@@ -1,35 +1,18 @@
 import React, { Component } from 'react';
 import './PostsPage.css';
 import PropTypes from 'prop-types';
-import dummyData from  './../../dummy-data'
-import styled, { css } from 'styled-components';
-
+import dummyData from  './../../dummy-data';
 
 import SearchBar from './SearchBar/SearchBar';
-
-// import CommentSection from './CommentSection/CommentSection';
 import PostContainer from './PostContainer/PostContainer';
 import CommentForm from './CommentForm/CommentForm';
-export const Header = styled.header``;
-export const PostsBoard = styled.div`
-.posts {
-  max-width: 600px;
-  width: 100%;
-  list-style: none;
-  margin: auto;
-  box-sizing: border-box;
-  padding: 0px;
-  background-color: #fffffff6;
-  position: relative;
-  top: 50px;
-  }
-    `
+import styled, { css } from 'styled-components';
+
 class PostsPage extends Component {
-  constructor(currentUser){
-    super(currentUser);
-    console.log(currentUser.username)
+  constructor(){
+    super();
     this.state = {
-      currentUser: localStorage.currentUser,
+      currentUser: JSON.parse(window.localStorage.currentUser),
       dummyData: [],
       newComments: [],
       searchKey: "",
@@ -48,17 +31,17 @@ class PostsPage extends Component {
       return <div>Stay Tuned - Fetching Data</div>;
     }
     return (
-      <PostsBoard>
+      <Page>
         <Header>
           <SearchBar
           value={this.state.searchKey}
           onSearchInputChange={this.onSearchInputChange} />
         </Header>
   
-        <ul className="posts">
+        <Board className="posts">
           {data.map((post, index) => (
             
-            <li className="post" key={index}>
+            <PostCard className="post" key={index}>
   
               <PostContainer
               id={index}
@@ -70,10 +53,10 @@ class PostsPage extends Component {
               newComment={this.state.newComments[index] ? this.state.newComments[index].text : ""}
               onCommentInputChange={this.onCommentInputChange}
               addComment={this.addComment} />
-            </li>)
+            </PostCard>)
           )}
-        </ul>
-      </PostsBoard> 
+        </Board>
+      </Page> 
     );
   }
 
@@ -96,17 +79,22 @@ class PostsPage extends Component {
   addComment = e => {
     e.preventDefault()
     const index = e.target.id;
-    const newComment = this.state.newComments[index];
-    const data = this.state.dummyData;
-    const comments = Array.from(this.state.newComments);
-    comments[index] = null;
-    data[index].comments.push(newComment);
+    if (this.state.newComments[index]) {
+      const newComment = this.state.newComments[index];
+      const data = this.state.dummyData;
+      const comments = Array.from(this.state.newComments);
+      comments[index] = null;
+      data[index].comments.push(newComment);
+  
+      this.setState(
+        {
+          dummyData: data,
+          newComments: comments 
+        });
+    } else {
+      return;
+    }
 
-    this.setState(
-      {
-        dummyData: data,
-        newComments: comments 
-      });
   }
 
   like = e => {
@@ -159,19 +147,41 @@ class PostsPage extends Component {
 
 export default PostsPage
 
-// PostContainer.propTypes = {
-//   post: PropTypes.shape({
-//     username: PropTypes.string.isRequired,
-//     thumbnailUrl: PropTypes.string.isRequired,
-//     imageUrl: PropTypes.string,
-//     likes: PropTypes.number,
-//     timestamp: PropTypes.string.isRequired
-//   })
-// };
+const card_spacing = 15;
 
-// CommentForm.propTypes = {
-//   comment: PropTypes.shape({
-//     username: PropTypes.string.isRequired,
-//     text: PropTypes.string.isRequired,
-//   })
-// };
+export const Header = styled.header`
+width: 100%;
+`;
+
+export const Post = styled.li`
+width: 100%;
+list-style: none;
+margin: auto;
+box-sizing: border-box;
+padding: 0px;
+background-color: #efeff1;
+position: relative;
+top: 50px;`;
+
+export const PostCard = styled.li`
+max-width: 400px;
+background-color: #f7f7f7;
+border-radius: ${card_spacing}px;
+box-shadow: 0px 2px 2px 0px #f4f8fcad;
+border: none;
+width: 100%;
+margin: 15px;
+box-shadow: 0 5px 5px 1px #8080801c;
+`;
+export const Board = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  padding-top: 65px;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+export const Page = styled.div`;
+
+`;

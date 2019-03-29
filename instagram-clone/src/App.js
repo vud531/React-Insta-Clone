@@ -5,6 +5,9 @@ import dummyData from  './dummy-data'
 import PostsPage from './components/PostsPage/PostsPage';
 import withAuthenticate from './components/authentication/Authentication'
 import Login from './components/Login/Login'
+
+
+
 class App extends Component {
   constructor(){
     super();

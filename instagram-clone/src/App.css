@@ -1,9 +1,12 @@
 
 :root {
-  background-color: #ffffff;
+  background-color: #efeff1;
 
 }
 
+* {
+  box-sizing: border-box;
+}
 
 /* @media (max-width: 500px) {
 

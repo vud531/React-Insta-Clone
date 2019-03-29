@@ -37,12 +37,12 @@ class Login extends React.Component {
 
     login = () => {
         const myStorage = window.localStorage;
-        myStorage.setItem('currentUser',{ 
+        myStorage.setItem('currentUser', JSON.stringify({ 
             username: this.state.username,
             logedIn: true,
-            likedPost: ["0"], 
-        });
-        this.setState({currentUser: Storage.currentUser})
+            likedPosts: ["0"], 
+        }));
+        // this.setState({currentUser: Storage.currentUser})
         window.location.reload();
     }
 }
