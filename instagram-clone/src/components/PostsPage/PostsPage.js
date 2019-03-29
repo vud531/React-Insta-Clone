@@ -10,10 +10,20 @@ import SearchBar from './SearchBar/SearchBar';
 // import CommentSection from './CommentSection/CommentSection';
 import PostContainer from './PostContainer/PostContainer';
 import CommentForm from './CommentForm/CommentForm';
-export const Header = styled.header`
-`;
-
-
+export const Header = styled.header``;
+export const PostsBoard = styled.div`
+.posts {
+  max-width: 600px;
+  width: 100%;
+  list-style: none;
+  margin: auto;
+  box-sizing: border-box;
+  padding: 0px;
+  background-color: #fffffff6;
+  position: relative;
+  top: 50px;
+  }
+    `
 class PostsPage extends Component {
   constructor(currentUser){
     super(currentUser);
@@ -38,7 +48,7 @@ class PostsPage extends Component {
       return <div>Stay Tuned - Fetching Data</div>;
     }
     return (
-      <div>
+      <PostsBoard>
         <Header>
           <SearchBar
           value={this.state.searchKey}
@@ -63,7 +73,7 @@ class PostsPage extends Component {
             </li>)
           )}
         </ul>
-      </div> 
+      </PostsBoard> 
     );
   }
 
